@@ -2,6 +2,45 @@ apiVersion: v1
 entries:
   datahub:
   - apiVersion: v2
+    appVersion: v1.8.0
+    created: "2026-11-06T04:21:41.249627607Z"
+    dependencies:
+    - condition: datahub-gms.enabled
+      name: datahub-gms
+      repository: file://./subcharts/datahub-gms
+      version: 0.3.22
+    - condition: datahub-frontend.enabled
+      name: datahub-frontend
+      repository: file://./subcharts/datahub-frontend
+      version: 0.3.14
+    - condition: global.datahub_standalone_consumers_enabled
+      name: datahub-mae-consumer
+      repository: file://./subcharts/datahub-mae-consumer
+      version: 0.3.16
+    - condition: global.datahub_standalone_consumers_enabled
+      name: datahub-mce-consumer
+      repository: file://./subcharts/datahub-mce-consumer
+      version: 0.3.18
+    - condition: datahub-ingestion-cron.enabled
+      name: datahub-ingestion-cron
+      repository: file://./subcharts/datahub-ingestion-cron
+      version: 0.2.155
+    - condition: acryl-datahub-actions.enabled
+      name: acryl-datahub-actions
+      repository: file://./subcharts/acryl-datahub-actions
+      version: 0.3.13
+    description: A Helm chart for DataHub (defaults include non-root security contexts
+      for workloads, hook jobs, and datahubSystemUpdate).
+    digest: 478015d90640d4e119852a3fbe2aaf343bc4c9e97f187b764e798476573453b6
+    maintainers:
+    - email: datahub@acryl.io
+      name: DataHub
+    name: datahub
+    type: application
+    urls:
+    - https://github.com/saxo-datagov/datahub-helm/releases/download/datahub-1.1.9/datahub-1.1.9.tgz
+    version: 1.1.9
+  - apiVersion: v2
     appVersion: 0.14.0
     created: "2024-08-16T00:43:29.785151194Z"
     dependencies:
@@ -9084,6 +9123,56 @@ entries:
     version: 0.1.2
   datahub-prerequisites:
   - apiVersion: v2
+    created: "2026-11-06T04:21:41.576803166Z"
+    dependencies:
+    - condition: elasticsearch.enabled
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.17.3
+    - condition: opensearch.enabled
+      name: opensearch
+      repository: https://opensearch-project.github.io/helm-charts
+      version: 2.19.0
+    - alias: opensearch3
+      condition: opensearch3.enabled
+      name: opensearch
+      repository: https://opensearch-project.github.io/helm-charts
+      version: 3.9.0
+    - condition: neo4j.enabled
+      name: neo4j
+      repository: https://helm.neo4j.com/neo4j
+      version: 5.11.0
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.4.9
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
+      version: 11.2.6
+    - condition: gcloud-sqlproxy.enabled
+      name: gcloud-sqlproxy
+      repository: https://charts.rimusz.net
+      version: 0.24.1
+    - condition: cp-helm-charts.enabled
+      name: cp-helm-charts
+      repository: https://confluentinc.github.io/cp-helm-charts/
+      version: 0.6.0
+    - condition: kafka.enabled
+      name: kafka
+      repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
+      version: 26.11.2
+    description: A Helm chart for packages that Datahub depends on
+    digest: 6303a425b717591670c54d1a3147b25c59052e8f8bb421af8b896af7a10b5294
+    maintainers:
+    - email: datahub@acryl.io
+      name: DataHub
+    name: datahub-prerequisites
+    type: application
+    urls:
+    - https://github.com/saxo-datagov/datahub-helm/releases/download/datahub-prerequisites-0.3.1/datahub-prerequisites-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
     created: "2024-06-24T17:33:45.684705801Z"
     dependencies:
     - condition: elasticsearch.enabled
@@ -10250,4 +10339,4 @@ entries:
     urls:
     - https://github.com/acryldata/datahub-helm/releases/download/datahub-prerequisites-0.0.1/datahub-prerequisites-0.0.1.tgz
     version: 0.0.1
-generated: "2024-08-16T00:43:29.788320062Z"
+generated: "2026-11-06T04:21:41.578513052Z"
